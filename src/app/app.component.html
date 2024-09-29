@@ -1,0 +1,26 @@
+<!--<router-outlet></router-outlet>-->
+<pre>
+{{stateFacade.articleState.state() | json}}
+</pre>
+
+<!-- list all resources -->
+<ul>
+  <li *ngFor="let article of stateFacade.articleState.state().resources">
+    {{article.title}}
+
+    <button (click)="toggleEdit(article)">Edit</button>
+    <button (click)="deleteArticle(article)">Delete</button>
+  </li>
+</ul>
+
+
+<!-- NEEDS TO START THE JSON SERVER -->
+
+<form [formGroup]="form">
+  <label for=""> Title </label>
+  <input formControlName="title" type="text" />
+  <label for=""> Content </label>
+  <textarea  formControlName="content"></textarea>
+  <button (click)="createOrUpdate()">Save</button>
+</form>
+
